@@ -1,6 +1,6 @@
 import sqlite3
 
-class LoginModel:
+class SignModel:
     def __init__(self):
         self.conn = sqlite3.connect("database/users.db")
         self.cursor = self.conn.cursor()
@@ -9,14 +9,18 @@ class LoginModel:
                 usrId INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR(50) UNIQUE NOT NULL,
                 password TEXT NOT NULL,
-                birthdate DATE NOT NULL
+                birthdate TEXT NOT NULL
             )
         """)
         self.conn.commit()
 
-    def Check_user_is_regesterd(self, username, password):
-        self.cursor.execute("SELECT * FROM users WHERE username=? AND password=?",
-         (username, password))
+    def check_if_username_is_taken(self, username):
+        self.cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         return self.cursor.fetchone() is not None
 
-
+    def signup_user(self, username, password, birthdate):
+        self.cursor.execute(
+            "INSERT INTO users (username, password, birthdate) VALUES (?, ?, ?)",
+            (username, password, birthdate)
+        )
+        self.conn.commit()
