@@ -2,14 +2,15 @@ import sqlite3
 
 class SignModel:
     def __init__(self):
-        self.conn = sqlite3.connect("database/users.db")
+        self.conn = sqlite3.connect("database/Project.db")
         self.cursor = self.conn.cursor()
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
-                usrId INTEGER PRIMARY KEY AUTOINCREMENT,
+                userId INTEGER PRIMARY KEY AUTOINCREMENT,
                 username VARCHAR(50) UNIQUE NOT NULL,
                 password TEXT NOT NULL,
-                birthdate TEXT NOT NULL
+                birthdate TEXT NOT NULL,
+                zipcode INTEGER
             )
         """)
         self.conn.commit()

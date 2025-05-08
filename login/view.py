@@ -19,8 +19,6 @@ class LoginView:
                 height=60,
                 width=156,
                 corner_radius=0,
-                bg_color="#ecbbdf",
-                fg_color="#ecbbdf",
         )
         self.loginLabel.place(x=280, y=20)
 
@@ -32,8 +30,6 @@ class LoginView:
                 height=13,
                 width=89,
                 corner_radius=0,
-                bg_color="#ecbbdf",
-                fg_color="#ecbbdf",
                 )
         self.usernameLable.place(x=270, y=100)
 
@@ -45,8 +41,6 @@ class LoginView:
                 height=18,
                 width=89,
                 corner_radius=0,
-                bg_color="#ecbbdf",
-                fg_color="#ecbbdf",
         )
         self.passwordLabel.place(x=270, y=160)   
 #button
@@ -54,7 +48,7 @@ class LoginView:
                 master = self.root,
                 text="Exit",
                 font=("undefined", 14),
-                text_color="#ff00ff",
+                text_color="red",
                 hover=True,
                 hover_color="#0000ff",
                 height=26,
@@ -62,8 +56,6 @@ class LoginView:
                 border_width=2,
                 corner_radius=6,
                 border_color="#000000",
-                bg_color="#ecbbdf",
-                fg_color="#F0F0F0",
                 command = self.root.quit
         )
         self.exitBtn.place(x=730, y=10)
@@ -79,9 +71,7 @@ class LoginView:
                 width=95,
                 border_width=2,
                 corner_radius=6,
-                border_color="#ff00ff",
-                bg_color="#ecbbdf",
-                fg_color="#F0F0F0",
+                border_color="red",
                 command =self.controller.login_handdiling ,
         )
         self.loginBtn.place(x=340, y=240)
@@ -90,7 +80,7 @@ class LoginView:
                 master = self.root,
                 text="Sign Up",
                 font=("undefined", 14),
-                text_color="#ff00ff",
+                text_color="red",
                 hover=True,
                 hover_color="#0000ff",
                 height=26,
@@ -98,8 +88,6 @@ class LoginView:
                 border_width=2,
                 corner_radius=6,
                 border_color="#000000",
-                bg_color="#ecbbdf",
-                fg_color="#F0F0F0",
                 command = self.controller.go_to_signup,
         )
         self.signupBtn.place(x=730, y=40)
@@ -110,7 +98,7 @@ class LoginView:
         self.usernameEntry = customtkinter.CTkEntry(
                 master = self.root,
                 placeholder_text="username",
-                placeholder_text_color="#454545",
+                placeholder_text_color="white",
                 font=("Arial", 14),
                 text_color="#000000",
                 height=30,
@@ -118,15 +106,13 @@ class LoginView:
                 border_width=2,
                 corner_radius=6,
                 border_color="#000000",
-                bg_color="#ecbbdf",
-                fg_color="#F0F0F0",
         )
         self.usernameEntry.place(x=290, y=120)
 
         self.passwordEntry = customtkinter.CTkEntry(
                 master = self.root,
                 placeholder_text="password",
-                placeholder_text_color="#454545",
+                placeholder_text_color="white",
                 font=("Arial", 14),
                 text_color="#000000",
                 height=30,
@@ -134,8 +120,6 @@ class LoginView:
                 border_width=2,
                 corner_radius=6,
                 border_color="#000000",
-                bg_color="#ecbbdf",
-                fg_color="#F0F0F0",
         )
         self.passwordEntry.place(x=290, y=180)
 

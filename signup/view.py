@@ -134,7 +134,7 @@ class SignupView:
 		    borderwidth=2,
 		    date_pattern='yyyy-mm-dd'  # Format: YYYY-MM-DD
 		)
-		self.birthdateEntry.place(x=280, y=270)
+		self.birthdateEntry.place(x=350, y=340)
 
 #button
 		self.signupBtn = customtkinter.CTkButton(
