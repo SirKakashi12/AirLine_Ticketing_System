@@ -159,11 +159,10 @@ class DashboardView:
         for r in results:
             row_text = f"{r['from']} → {r['to']} | {r['departure_date']} at {r['departure_time']}"
 
-            # Create a frame to hold label + button side by side
+            # Create a frame to hold label + button
             row_frame = ctk.CTkFrame(master=self.scrollable_frame, fg_color="transparent")
             row_frame.pack(pady=6, padx=10, fill="x")
 
-            # The label
             label = ctk.CTkLabel(
                 master=row_frame,
                 text=row_text,
@@ -174,19 +173,18 @@ class DashboardView:
                 height=40,
                 anchor="w"
             )
-            label.pack(side="left", fill="x", expand=True, padx=(0, 10))  # expand pushes the button to the right
+            label.pack(side="left", fill="x", expand=True, padx=(0, 10))
 
-            # The button
             action_btn = ctk.CTkButton(
                 master=row_frame,
                 text="Create Ticket",
                 text_color="white",
-                fg_color="#4CAF50",  # green
+                fg_color="#4CAF50",
                 hover_color="#45A049",
                 font=("Arial", 14, "bold"),
-                width=80,
+                width=120,
                 height=36,
                 corner_radius=10,
-                #command= 
+                command=lambda departure_id=r['departuresId']: self.create_ticket(departure_id)
             )
             action_btn.pack(side="right")

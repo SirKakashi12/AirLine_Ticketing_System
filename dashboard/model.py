@@ -93,7 +93,7 @@ class DashboardModel:
         
         return [
             {
-                "departuresId" : row[0]
+                "departuresId" : row[0],
                 "from": row[1],
                 "to": row[2],
                 "departure_time": row[3],
