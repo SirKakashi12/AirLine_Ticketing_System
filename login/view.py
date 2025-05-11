@@ -6,7 +6,7 @@ class LoginView:
     def __init__(self, root, controller):
         self.root = root
         self.controller = controller
-
+        self.root.geometry("800x400")
         self.root.title("Sign In")
 
 
@@ -47,15 +47,17 @@ class LoginView:
         self.exitBtn = customtkinter.CTkButton(
                 master = self.root,
                 text="Exit",
-                font=("undefined", 14),
-                text_color="red",
+                font=("Courier New", 14),
+                text_color="white",
                 hover=True,
-                hover_color="#0000ff",
+                hover_color="#ff0000",
                 height=26,
                 width=64,
                 border_width=2,
                 corner_radius=6,
-                border_color="#000000",
+                border_color="black",
+                bg_color="transparent",
+                fg_color="red",
                 command = self.root.quit
         )
         self.exitBtn.place(x=730, y=10)
@@ -63,15 +65,17 @@ class LoginView:
         self.loginBtn = customtkinter.CTkButton(
                 master = self.root,
                 text="Log In",
-                font=("undefined", 14),
-                text_color="#e100ff",
+                font=("Courier New", 14),
+                text_color="white",
                 hover=True,
-                hover_color="#0000ff",
-                height=30,
-                width=95,
+                hover_color="#ff0000",  # red on hover
+                height=26,
+                width=64,
                 border_width=2,
                 corner_radius=6,
-                border_color="red",
+                border_color="black",
+                bg_color="transparent",
+                fg_color="red",
                 command =self.controller.login_handdiling ,
         )
         self.loginBtn.place(x=340, y=240)
@@ -79,18 +83,20 @@ class LoginView:
         self.signupBtn = customtkinter.CTkButton(
                 master = self.root,
                 text="Sign Up",
-                font=("undefined", 14),
-                text_color="red",
+                font=("Courier New", 14),
+                text_color="white",
                 hover=True,
-                hover_color="#0000ff",
+                hover_color="#ff0000",
                 height=26,
                 width=64,
                 border_width=2,
                 corner_radius=6,
-                border_color="#000000",
+                border_color="black",
+                bg_color="transparent",
+                fg_color="red",
                 command = self.controller.go_to_signup,
         )
-        self.signupBtn.place(x=730, y=40)
+        self.signupBtn.place(x=725, y=40)
 
 #entry
 

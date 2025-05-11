@@ -2,6 +2,7 @@ from itertools import permutations
 import sqlite3
 import random
 from datetime import datetime, timedelta
+
 def start():
     provinces = sorted([
         "Abra", "Agusan del Norte", "Agusan del Sur", "Aklan", "Albay", "Antique", "Apayao", "Aurora",
@@ -21,7 +22,9 @@ def start():
     conn = sqlite3.connect("database/Project.db")
     cursor = conn.cursor()
 
-    pairs = [pair for pair in permutations(provinces, 2)]
+    # Fetch real airplaneIds
+    cursor.execute("SELECT airplaneId FROM airplanes")
+    airplane_ids = [row[0] for row in cursor.fetchall()]
 
     def random_time():
         hour = random.randint(0, 23)
@@ -32,12 +35,16 @@ def start():
         date = start + timedelta(days=random.randint(0, days))
         return date.strftime("%Y-%m-%d")
 
+    pairs = [pair for pair in permutations(provinces, 2)]
+    random.shuffle(pairs)
+    pairs = pairs[:500]   
+
     for departure, arrival in pairs:
         arrival_time = random_time()
         departure_time = random_time()
         arrival_date = random_date()
         departure_date = random_date()
-        airplaneId = random.randint(1, 5)  # Use real airplaneIds if needed
+        airplaneId = random.choice(airplane_ids)
 
         cursor.execute("""
             INSERT INTO departures (

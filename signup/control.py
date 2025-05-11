@@ -11,14 +11,18 @@ class SignupController:
 
 
     def regester_user_handeling(self):
+
+        
+
         username = self.view.usernameEntry.get()
         password = self.view.passwordEntry.get()
-        confirm_password = self.view.repeatpasswordEntry.get()
+        confirm_password = self.view.repeatPasswordEntry.get()
         birthdate = self.view.birthdateEntry.get()
 
         if not username or not password or not confirm_password or not birthdate:
             messagebox.showerror("Error", "All fields are required.")
-            return
+            return 
+        
 
         if password != confirm_password:
             messagebox.showerror("Error", "Passwords do not match!")

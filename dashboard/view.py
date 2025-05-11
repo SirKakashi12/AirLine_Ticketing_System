@@ -9,7 +9,7 @@ import session.session as session
 class DashboardView:
     def __init__(self, root, controller):
         self.root = root
-        self.root.geometry("800x500")
+        self.root.geometry("1000x500")
         self.root.title("Philippines Airlines")
         self.controller = controller
         self.root.configure(bg="#242424")
@@ -53,13 +53,13 @@ class DashboardView:
         self.home_button = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Home", bg="#242424")
         self.home_button.pack(fill="x")
 
-        self.departure_button = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Departure", bg="#242424")
-        self.departure_button.pack(fill="x")
+        self.Ticket_list = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Ticket List", bg="#242424",command=controller.go_to_ticketlist)
+        self.Ticket_list.pack(fill="x")
 
         tk.Label(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="", bg="#242424").pack(fill="x")
         tk.Label(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="", bg="#242424").pack(fill="x")
 
-        self.logout_button = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Logout", bg="#242424")
+        self.logout_button = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Logout", bg="#242424", command=controller.logOut)
         self.logout_button.pack(fill="x", side="bottom")
 
         self.settings_button = tk.Button(self.left_panel,fg="red",font=("Courier New",20,"bold"), text="Settings", bg="#242424")
@@ -135,15 +135,12 @@ class DashboardView:
             widget.destroy()
 
         if not results:
-            # Clear previous widgets
             for widget in self.scrollable_frame.winfo_children():
                 widget.destroy()
 
-            # Make row and column expand to fill space
             self.scrollable_frame.grid_rowconfigure(0, weight=1)
             self.scrollable_frame.grid_columnconfigure(0, weight=1)
 
-            # Label with 'No results found.'
             ctk.CTkLabel(
                 self.scrollable_frame,
                 text="No results found.",
@@ -159,7 +156,6 @@ class DashboardView:
         for r in results:
             row_text = f"{r['from']} → {r['to']} | {r['departure_date']} at {r['departure_time']}"
 
-            # Create a frame to hold label + button
             row_frame = ctk.CTkFrame(master=self.scrollable_frame, fg_color="transparent")
             row_frame.pack(pady=6, padx=10, fill="x")
 
@@ -185,6 +181,6 @@ class DashboardView:
                 width=120,
                 height=36,
                 corner_radius=10,
-                command=lambda departure_id=r['departuresId']: self.create_ticket(departure_id)
+                command=lambda departure_id=r['departuresId']: self.controller.go_to_ticket(departure_id)
             )
             action_btn.pack(side="right")

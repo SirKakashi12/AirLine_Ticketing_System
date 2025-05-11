@@ -14,5 +14,10 @@ class Session:
         return key in Session.data
 
     @staticmethod
+    def remove(key):
+        if key in Session.data:
+            del Session.data[key]
+
+    @staticmethod
     def clear():
         Session.data.clear()

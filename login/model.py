@@ -6,6 +6,7 @@ class LoginModel:
     def __init__(self):
         self.conn = sqlite3.connect("database/Project.db")
         self.cursor = self.conn.cursor()
+        self.cursor.execute("PRAGMA foreign_keys = ON;")
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 userId INTEGER PRIMARY KEY AUTOINCREMENT,
