@@ -11,9 +11,6 @@ class SignupController:
 
 
     def regester_user_handeling(self):
-
-        
-
         username = self.view.usernameEntry.get()
         password = self.view.passwordEntry.get()
         confirm_password = self.view.repeatPasswordEntry.get()

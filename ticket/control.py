@@ -21,8 +21,8 @@ class TicketController:
 
     def create_ticket(self, userId, departuresId, seat_code, classes):
         try:
-            x = self.model.Insert_Ticket_database(userId, departuresId, seat_code, classes)
-            if x == False:
+            self.model.Insert_Ticket_database(userId, departuresId, seat_code, classes)
+            if self.model.seat_is_taken(departuresId,seat_code) == True :
                 messagebox.showwarning("Warning", f"Seat {seat_code} is already taken for this flight.")
                 return
             messagebox.showinfo("Info", "Successfully created ticket")

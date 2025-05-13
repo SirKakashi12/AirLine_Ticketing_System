@@ -35,6 +35,13 @@ class TicketModel:
 				)
 			""")
 		self.conn.commit()
+	def seat_is_taken(self, departuresId, seat_code):
+	    self.cursor.execute("""
+	        SELECT 1 FROM tickets 
+	        WHERE departuresId = ? AND seat_code = ?
+	    """, (departuresId, seat_code))
+	    
+	    return  self.cursor.fetchone() is not None
 
 
 	def get_all_info_in_departure(self, departuresId):

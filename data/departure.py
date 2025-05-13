@@ -61,4 +61,3 @@ def start():
         ))
 
     conn.commit()
-    conn.close()

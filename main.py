@@ -5,8 +5,9 @@ import customtkinter as ctk
 ctk.set_appearance_mode("dark")
 root = ctk.CTk()
 root.geometry("800x400")
-app = LoginController(root)
+LoginController(root)
 root.mainloop()
 
 
+	
 	

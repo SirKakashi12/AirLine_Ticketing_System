@@ -27,9 +27,10 @@ class LoginModel:
         self.cursor.execute("SELECT userId FROM users WHERE username=? AND password=?", (username, password))
         result = self.cursor.fetchone() 
         if result:
-            session.Session.set("usrId", result[0])  
-            return True
+            session.Session.set("usrId", result[0])
+            print(result)
+            return True 
         return False
-        
+
 
 

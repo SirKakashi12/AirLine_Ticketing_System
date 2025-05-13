@@ -11,9 +11,6 @@ def start():
     conn = sqlite3.connect("database/Project.db")
     cursor = conn.cursor()
 
-    # Optional: clear table first if needed
-    # cursor.execute("DELETE FROM airplanes")
-
     for name in airplane_names:
         code = ''.join(random.choices("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", k=5))
         cursor.execute("""
@@ -22,4 +19,3 @@ def start():
         """, (name, code))
 
     conn.commit()
-    conn.close()

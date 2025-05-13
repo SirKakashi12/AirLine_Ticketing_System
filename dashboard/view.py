@@ -155,7 +155,6 @@ class DashboardView:
 
         for r in results:
             row_text = f"{r['from']} → {r['to']} | {r['departure_date']} at {r['departure_time']}"
-
             row_frame = ctk.CTkFrame(master=self.scrollable_frame, fg_color="transparent")
             row_frame.pack(pady=6, padx=10, fill="x")
 

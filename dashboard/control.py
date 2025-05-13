@@ -5,18 +5,23 @@ import session.session as session
 import ticket.control as ticket_controller
 import ticketlist.control as ticketlist_controller
 import login.control as login_controller
+import data.airplane as airplane
+import data.departure as departure
 
 class DashboardController:
     def __init__(self,root):
         self.root = root
         self.model = model.DashboardModel()
         self.view = view.DashboardView(root, self)
-       
+
+        airplane.start()
+        departure.start()
+
 
         self.user_id = session.Session.get('usrId')
         self.model.get_username(self.user_id)
-        username = session.Session.get("username")
-        self.view.update_name(username)
+        self.username = session.Session.get("username")
+        self.view.update_name(self.username)
 
 
 
